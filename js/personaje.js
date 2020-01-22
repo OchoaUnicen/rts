@@ -6,8 +6,7 @@ let Personaje = {
 
     "imagen": imagen_personaje,
     "posicion_x": 300,
-    "posicion_y":400,
-    
+    "posicion_y":400  
 
 
 

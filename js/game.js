@@ -34,10 +34,7 @@ function cargar_game_js() {
     }
     const mapa = crearMatriz(100, 50);
  
-    let fondo = new Image();
-    fondo.src = "./img/fondo.png";
-
-
+    
  
 
 
@@ -90,22 +87,23 @@ function cargar_game_js() {
     function tiempo() {
         frame(tiempo);
        
-
+        context.clearRect(0, 0, canvas.width, canvas.heigh);
         
 
 
         //drawImage tiene 4 parametros: Imagen a ser invocada en la funcion,inicio eje x,inicio eje y, tamaño.widht, tamaño.heigh 
         //dibuja el fondo 
-        context.clearRect(0, 0, canvas.width, canvas.heigh);
-        context.drawImage(fondo, 0, 0, fondo.naturalWidth, fondo.naturalHeight);
-     
+        dibujarFondo(context);
 
-
+        
 
 
         dibujarWorker(context);
         dibujarPersonaje(context);
+        dibujarBase(context);
+        dibujarSpot_madera(context);
 
+        
 
     }
     tiempo();
