@@ -11,9 +11,11 @@ let Trabajador = {
     "posicion_y": 100,
     "cantidad": 0,
     "estado":"quieto",
-    //estados : quieto, buscando, recolectando, volviendo, depositando
+    //estados : quieto, buscando, recolectando, volviendo, depositando, caminando
     "cooldown": 0,
-    "objetivo": "el_spot",
+    "objetivo_x": "el_spot.x",
+    "objetivo_y": "el_spot.y",
+    "seleccionado": false,
 
     w: 100,
     h: 100
@@ -30,6 +32,59 @@ function dibujarTrabajador(context) {
 
 
 }
+
+
+
+// function moverTrabajador () {
+
+//     var posicion_mouse = getMousePos(canvas, evt);
+
+//     if (Trabajador.estado == "caminando"){
+
+//          if ((Trabajador.posicion_x != posicion_mouse.x) && (Trabajador.posicion_y != posicion_mouse.y)) {
+//             console.log("moviendo");
+//             if (Trabajador.posicion_x <= posicion_mouse.x){
+
+//                 Trabajador.posicion_x += 5;
+
+//             }
+
+//             if (Trabajador.posicion_x >= posicion_mouse.x){
+
+//                 Trabajador.posicion_x -= 5;
+
+//             }
+
+
+//             if (Trabajador.posicion_y <= posicion_mouse.y){
+
+//                 Trabajador.posicion_y += 5;
+
+//             }
+
+//             if (Trabajador.posicion_y >= posicion_mouse.y){
+
+//                 Trabajador.posicion_y -= 5;
+
+//             }
+
+
+//         }
+
+//         else {
+
+//             Trabajador.estado = "quieto";
+//         }
+
+
+//     }
+
+
+
+
+
+
+// }
 
 
 

@@ -66,10 +66,16 @@ function cargar_game_js() {
         //console.log("clicked");
         console.log(mousePos.x + ',' + mousePos.y);     
 
+
+
+
+      
             //falta agregar precision
             if((mousePos.x >= Trabajador.posicion_x && mousePos.x <= Trabajador.posicion_x + Trabajador.imagen.naturalWidth) &&
                 mousePos.y >= Trabajador.posicion_y && mousePos.y <= Trabajador.posicion_y + Trabajador.imagen.naturalHeight ) {
                     console.log("clickeo en trabajador");
+
+                    Trabajador.seleccionado = true;
 
             }
 
@@ -77,22 +83,82 @@ function cargar_game_js() {
 
 
 
+            else {
+                Trabajador.seleccionado = false;
+
+
+            }
+
+            console.log(Trabajador.seleccionado);
+
+
+
 
 
         
     }, false);
 
-    canvas.addEventListener('contextmenu', function(evt) {
+    canvas.addEventListener('contextmenu', seHizoClickDerecho, false);
+
+
+    function seHizoClickDerecho(evt){
        
 
         var mouse_pos = getMousePos(canvas, evt);
         
             console.log(mouse_pos.x + ", " + mouse_pos.y);
 
+
+
+        //----------
+
+        if (Trabajador.seleccionado == true) {
+            console.log("entra trabajador.seleccionado == true");
+            Trabajador.objetivo_x = mouse_pos.x;
+            Trabajador.objetivo_y = mouse_pos.y;
+            Trabajador.estado = "caminando";
+            console.log("estado trabajador : " + Trabajador.estado);
+        }
+
+        // if (Trabajador.seleccionado == true && (Trabajador.posicion_x != mouse_pos.x) && (Trabajador.posicion_y != mouse_pos.y)) {
+        //     console.log("entro");
+        //     if (Trabajador.posicion_x <= mouse_pos.x){
+
+        //         Trabajador.posicion_x += 5;
+
+        //     }
+
+        //     if (Trabajador.posicion_x >= mouse_pos.x){
+
+        //         Trabajador.posicion_x -= 5;
+
+        //     }
+
+
+        //     if (Trabajador.posicion_y <= mouse_pos.y){
+
+        //         Trabajador.posicion_y += 5;
+
+        //     }
+
+        //     if (Trabajador.posicion_y >= mouse_pos.y){
+
+        //         Trabajador.posicion_y -= 5;
+
+        //     }
+
+
+        // }
+
+
+        //----------
+
+
+
+
+
             evt.preventDefault();
-    }, false);
-
-
+    }
 
 
 
@@ -111,6 +177,59 @@ function cargar_game_js() {
 
     //-------
 
+
+
+    function moverTrabajador () {
+
+        
+    
+        if (Trabajador.estado == "caminando"){
+    
+             if ((Trabajador.posicion_x != Trabajador.objetivo_x) && (Trabajador.posicion_y != Trabajador.objetivo_y)) {
+                console.log("moviendo");
+                if (Trabajador.posicion_x <=Trabajador.objetivo_x){
+    
+                    Trabajador.posicion_x += 5;
+    
+                }
+    
+                if (Trabajador.posicion_x >= Trabajador.objetivo_x){
+    
+                    Trabajador.posicion_x -= 5;
+    
+                }
+    
+    
+                if (Trabajador.posicion_y <= Trabajador.objetivo_y){
+    
+                    Trabajador.posicion_y += 5;
+    
+                }
+    
+                if (Trabajador.posicion_y >= Trabajador.objetivo_y){
+    
+                    Trabajador.posicion_y -= 5;
+    
+                }
+    
+    
+            }
+    
+            else {
+    
+                Trabajador.estado = "quieto";
+            }
+    
+    
+        }
+    
+    
+    
+    
+    
+    
+    }
+
     //renderizacion - Todo dentro se realizarada 60 veces por segundo
     function tiempo() {
         frame(tiempo);
@@ -127,9 +246,35 @@ function cargar_game_js() {
 
 
         dibujarTrabajador(context);
+        moverTrabajador();
+
+
+
         dibujarPersonaje(context);
+
+
         dibujarBase(context);
         dibujarSpot_madera(context);
+
+
+
+
+
+
+
+
+       
+
+
+
+
+
+
+
+
+
+
+
 
         
 

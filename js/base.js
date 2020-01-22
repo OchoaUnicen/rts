@@ -7,7 +7,11 @@ let Base = {
 
     "imagen": imagen_base,
     "posicion_x": 300,
-    "posicion_y": 10
+    "posicion_y": 10,
+    
+
+    w: 200,
+    h: 200
 
 }
 
