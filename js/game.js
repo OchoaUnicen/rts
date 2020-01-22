@@ -63,17 +63,45 @@ function cargar_game_js() {
     canvas.addEventListener("click", function (evt) {
         var mousePos = getMousePos(canvas, evt);
 
-        console.log("clicked");
+        //console.log("clicked");
         console.log(mousePos.x + ',' + mousePos.y);     
+
+            //falta agregar precision
+            if((mousePos.x >= Trabajador.posicion_x && mousePos.x <= Trabajador.posicion_x + Trabajador.imagen.naturalWidth) &&
+                mousePos.y >= Trabajador.posicion_y && mousePos.y <= Trabajador.posicion_y + Trabajador.imagen.naturalHeight ) {
+                    console.log("clickeo en trabajador");
+
+            }
+
+
+
+
+
+
 
         
     }, false);
+
+    canvas.addEventListener('contextmenu', function(evt) {
+       
+
+        var mouse_pos = getMousePos(canvas, evt);
+        
+            console.log(mouse_pos.x + ", " + mouse_pos.y);
+
+            evt.preventDefault();
+    }, false);
+
+
+
+
+
     
     //Get Mouse Position
     function getMousePos(canvas, evt) {
         var rect = canvas.getBoundingClientRect();
         return {
-            x: evt.clientX - rect.left,
+            x: Math.floor(evt.clientX - rect.left),
             y: evt.clientY - rect.top
         };
     }
@@ -98,7 +126,7 @@ function cargar_game_js() {
         
 
 
-        dibujarWorker(context);
+        dibujarTrabajador(context);
         dibujarPersonaje(context);
         dibujarBase(context);
         dibujarSpot_madera(context);
