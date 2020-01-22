@@ -104,6 +104,7 @@ function cargar_game_js() {
 
 
         dibujarWorker(context);
+        dibujarPersonaje(context);
 
 
     }

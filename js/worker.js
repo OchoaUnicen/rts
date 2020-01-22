@@ -6,9 +6,8 @@ let Worker = {
 
     "imagen": imagen_worker,
     "posicion_x": 100,
-    "posicion_y": 100
-      
-
+    "posicion_y": 100,
+    
 
 
 
