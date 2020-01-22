@@ -185,34 +185,38 @@ function cargar_game_js() {
     
         if (Trabajador.estado == "caminando"){
     
-             if ((Trabajador.posicion_x != Trabajador.objetivo_x) && (Trabajador.posicion_y != Trabajador.objetivo_y)) {
+             if (Trabajador.posicion_x != (Trabajador.objetivo_x - (Trabajador.w / 2))) {
                 console.log("moviendo");
-                if (Trabajador.posicion_x <=Trabajador.objetivo_x){
+                if (Trabajador.posicion_x < (Trabajador.objetivo_x - (Trabajador.w / 2))){
     
-                    Trabajador.posicion_x += 5;
-    
-                }
-    
-                if (Trabajador.posicion_x >= Trabajador.objetivo_x){
-    
-                    Trabajador.posicion_x -= 5;
+                    Trabajador.posicion_x += 3;
     
                 }
     
+                if (Trabajador.posicion_x > (Trabajador.objetivo_x - (Trabajador.w / 2))){
     
-                if (Trabajador.posicion_y <= Trabajador.objetivo_y){
+                    Trabajador.posicion_x -= 3;
     
-                    Trabajador.posicion_y += 5;
+                }
+
+            }    
+        
+            if(Trabajador.posicion_y != Trabajador.objetivo_y + (Trabajador.h / 2)) {
+
+                if (Trabajador.posicion_y < Trabajador.objetivo_y - (Trabajador.h / 2)){
+    
+                    Trabajador.posicion_y += 3;
     
                 }
     
-                if (Trabajador.posicion_y >= Trabajador.objetivo_y){
+                if (Trabajador.posicion_y > Trabajador.objetivo_y - (Trabajador.h / 2)){
     
-                    Trabajador.posicion_y -= 5;
+                    Trabajador.posicion_y -= 3;
     
                 }
     
-    
+
+
             }
     
             else {
