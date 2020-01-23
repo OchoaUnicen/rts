@@ -236,9 +236,14 @@ function cargar_game_js() {
         dibujarTrabajador(context);
         moverTrabajador();
         buscarElemento();
+        recolectarMateriales();
+        volverBase();
+        despositandoMateriales();
+
+        //aca jimmy
 
 
-        console.log(Trabajador.cooldown);
+        //console.log(Trabajador.cooldown);
         
 
         if (Trabajador.cooldown > 0) {

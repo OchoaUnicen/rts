@@ -55,17 +55,17 @@ function buscarElemento() {
                 Trabajador.posicion_y += 3;
             }
 
-            console.log("trab pos x" +Trabajador.posicion_x);
-        console.log("trab pos y" +Trabajador.posicion_y);
+        //     console.log("trab pos x" +Trabajador.posicion_x);
+        // console.log("trab pos y" +Trabajador.posicion_y);
 
             if ((Trabajador.posicion_x >= 9 && Trabajador.posicion_x <= 12) && (Trabajador.posicion_y >= 79 && Trabajador.posicion_x <= 83)) {
 
 
-                Trabajador.cooldown = 1000;
+                Trabajador.cooldown = 5000;
                 Trabajador.estado = "recolectando"
 
-                console.log(Trabajador.cooldown);
-                console.log(Trabajador.estado);
+                // console.log(Trabajador.cooldown);
+                // console.log(Trabajador.estado);
             }
 
 
@@ -78,6 +78,183 @@ function buscarElemento() {
 }
 
 
+function recolectarMateriales() {
+
+
+    
+    if (Trabajador.estado == "recolectando") {
+
+        
+        
+        switch (Trabajador.cooldown) {
+
+            case 4980: 
+
+            Trabajador.cantidad += 1;
+        
+            break;
+
+            case 4000:
+
+                Trabajador.cantidad += 1;
+        
+                break;
+
+            case 3000: 
+            Trabajador.cantidad += 1;
+        
+            break;
+           
+            case 2000: 
+            Trabajador.cantidad += 1;
+        
+            break;
+
+            case 1000: 
+            Trabajador.cantidad += 1;
+        
+            break;
+
+        }
+
+
+        console.log(Trabajador.cantidad);
+
+
+        if (Trabajador.cantidad == 5) {
+
+
+            Trabajador.estado = "volviendo";
+
+            console.log(Trabajador.estado);
+        }
+
+
+    }
+
+
+
+}
+
+
+
+function volverBase() {
+
+    if (Trabajador.estado == "volviendo" && Trabajador.cooldown == 0) {
+
+
+        if (Trabajador.posicion_x <= Base.posicion_x) {
+
+            Trabajador.posicion_x += 3;
+
+
+        }
+
+        
+        if (Trabajador.posicion_x >= Base.posicion_x) {
+
+            Trabajador.posicion_x -= 3;
+
+
+        }
+
+        
+        if (Trabajador.posicion_y <= Base.posicion_y) {
+
+            Trabajador.posicion_y += 3;
+
+
+        }
+
+        if (Trabajador.posicion_y <= Base.posicion_y) {
+
+            Trabajador.posicion_y += 3;
+
+
+        }
+
+        //298 82
+        console.log(Trabajador.posicion_x);
+        console.log(Trabajador.posicion_y);
+
+
+        //(Trabajador.posicion_x >= 295 && Trabajador.posicion_x <= 300) && (Trabajador.posicion_y >= 80 && Trabajador.posicion_y <= 85)
+
+        if ((Trabajador.posicion_x >= 295 && Trabajador.posicion_x <= 300) && (Trabajador.posicion_y >= 80 && Trabajador.posicion_y <= 85)) {
+
+
+            Trabajador.cooldown = 5000;
+            Trabajador.estado = "depositando";
+            console.log("Estado del trabajador" + Trabajador.estado);
+
+        }
+
+
+    }
+
+
+}
+
+
+
+function despositandoMateriales() {
+
+
+    if (Trabajador.estado == "depositando" && Trabajador.cantidad > 0){
+       
+
+        switch (Trabajador.cooldown) {
+
+            case 4980: 
+
+            Trabajador.cantidad -= 1;
+            Stats.madera += 1;
+        
+            break;
+
+            case 4000:
+
+                Trabajador.cantidad -= 1;
+                Stats.madera += 1;
+                break;
+
+            case 3000: 
+            Trabajador.cantidad -= 1;
+            Stats.madera += 1;
+            break;
+           
+            case 2000: 
+            Trabajador.cantidad -= 1;
+            Stats.madera += 1;
+            break;
+
+            case 1000: 
+            Trabajador.cantidad -= 1;
+            Stats.madera += 1;
+            break;
+
+        }
+
+
+
+        if (Trabajador.cantidad == 0) {
+
+
+            Trabajador.estado = "buscando";
+            console.log("Cantidad maderas acumuladas: " + Stats.madera);
+
+
+        }
+        //aca cambia estado en cantidad 0
+
+
+
+    }
+
+
+
+
+}
 
 
 
