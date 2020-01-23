@@ -113,11 +113,37 @@ function cargar_game_js() {
         //----------
 
         if (Trabajador.seleccionado == true) {
-            console.log("entra trabajador.seleccionado == true");
+            console.log("trabajador seleccionado");
             Trabajador.objetivo_x = mouse_pos.x;
             Trabajador.objetivo_y = mouse_pos.y;
-            Trabajador.estado = "caminando";
-            console.log("estado trabajador : " + Trabajador.estado);
+
+
+            //si el click derecho no se hizo sobre alguna otra construccion entonces caminando ,, sino depende de la contruccion su funcion
+
+
+
+            // luego ese hardcode de posiciones tiene que se el x,y + sus respectivos w,h  de Spot Madera
+            if (((Trabajador.objetivo_x >= 32 && Trabajador.objetivo_x <= 88) && (Trabajador.objetivo_y >= 100 && Trabajador.posicion_y <= 153))) {
+
+                    console.log("rightclickeo en madera");
+                    Trabajador.estado = "buscando";
+
+            }
+
+
+
+
+
+            //por alguna razon a veces toma mas distancia en y de Spot Madera que lo que deberia --REVISAR
+            else {
+
+
+                Trabajador.estado = "caminando";
+                console.log("estado trabajador : " + Trabajador.estado);
+
+            }
+
+
         }
 
         // if (Trabajador.seleccionado == true && (Trabajador.posicion_x != mouse_pos.x) && (Trabajador.posicion_y != mouse_pos.y)) {
@@ -179,60 +205,7 @@ function cargar_game_js() {
 
 
 
-    function moverTrabajador () {
-
-        
-    
-        if (Trabajador.estado == "caminando"){
-    
-             if (Trabajador.posicion_x != (Trabajador.objetivo_x - (Trabajador.w / 2))) {
-                console.log("moviendo");
-                if (Trabajador.posicion_x < (Trabajador.objetivo_x - (Trabajador.w / 2))){
-    
-                    Trabajador.posicion_x += 3;
-    
-                }
-    
-                if (Trabajador.posicion_x > (Trabajador.objetivo_x - (Trabajador.w / 2))){
-    
-                    Trabajador.posicion_x -= 3;
-    
-                }
-
-            }    
-        
-            if(Trabajador.posicion_y != Trabajador.objetivo_y + (Trabajador.h / 2)) {
-
-                if (Trabajador.posicion_y < Trabajador.objetivo_y - (Trabajador.h / 2)){
-    
-                    Trabajador.posicion_y += 3;
-    
-                }
-    
-                if (Trabajador.posicion_y > Trabajador.objetivo_y - (Trabajador.h / 2)){
-    
-                    Trabajador.posicion_y -= 3;
-    
-                }
-    
-
-
-            }
-    
-            else {
-    
-                Trabajador.estado = "quieto";
-            }
-    
-    
-        }
-    
-    
-    
-    
-    
-    
-    }
+   
 
     //renderizacion - Todo dentro se realizarada 60 veces por segundo
     function tiempo() {
@@ -249,9 +222,6 @@ function cargar_game_js() {
         
 
 
-        dibujarTrabajador(context);
-        moverTrabajador();
-
 
 
         dibujarPersonaje(context);
@@ -262,8 +232,25 @@ function cargar_game_js() {
 
 
 
+        //clase trabajador.js
+        dibujarTrabajador(context);
+        moverTrabajador();
+        buscarElemento();
 
 
+        console.log(Trabajador.cooldown);
+        
+
+        if (Trabajador.cooldown > 0) {
+
+            Trabajador.cooldown -= 10;
+        }
+
+
+        if (Trabajador.cooldown < 0) {
+
+            Trabajador.cooldown = 0;
+        }
 
 
 

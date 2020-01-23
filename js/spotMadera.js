@@ -7,7 +7,10 @@ let Spot_Madera = {
 
     "imagen": imagen_spot_madera,
     "posicion_x": 10,
-    "posicion_y": 80
+    "posicion_y": 80,
+
+    w: 100,
+    h: 100
 }
 
 
