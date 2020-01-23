@@ -174,8 +174,8 @@ function volverBase() {
         }
 
         //298 82
-        console.log(Trabajador.posicion_x);
-        console.log(Trabajador.posicion_y);
+        // console.log(Trabajador.posicion_x);
+        // console.log(Trabajador.posicion_y);
 
 
         //(Trabajador.posicion_x >= 295 && Trabajador.posicion_x <= 300) && (Trabajador.posicion_y >= 80 && Trabajador.posicion_y <= 85)
@@ -185,7 +185,7 @@ function volverBase() {
 
             Trabajador.cooldown = 5000;
             Trabajador.estado = "depositando";
-            console.log("Estado del trabajador" + Trabajador.estado);
+            //console.log("Estado del trabajador" + Trabajador.estado);
 
         }
 
